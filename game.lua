@@ -115,6 +115,7 @@ function draw_game()
     spr(p.s, p.x, p.y)
   end
 
+  draw_windows()
   -- make sure to set camera position after sprites are drawn
   camera(cx, cy)
   print("score " .. hero_score, 10+cx, 10+cy)

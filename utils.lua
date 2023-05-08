@@ -48,6 +48,30 @@ function get_pickups(map_w, map_h, flag)
   return pickups
 end
 
+windows={}
+function new_window(x, y, w, h, text)
+  local w={x=x, y=y, w=w, h=h, text=text}
+  add(windows,w)
+  return w
+end
+
+function draw_windows()
+ for w in all(windows) do
+  local wx,wy,ww,wh=w.x,w.y,w.w,w.h
+  rectfill2(wx,wy,ww,wh,0)
+  rectfill2(wx+1,wy+1,ww-2,wh-2,6)
+  rectfill2(wx+2,wy+2,ww-4,wh-4,0)
+  wx=wx+4
+  wy=wy+4
+--  clip(wx,wy,ww-8,wh-8)
+  -- for i=1,#w.text do
+  --  local txt=w.text[i]
+  print(w.text,wx,wy,6)
+   -- wy=wy+6
+  -- end
+ end
+end
+
 -- random int between i and j
 function rand(i, j)
   if (j) then
@@ -55,4 +79,8 @@ function rand(i, j)
   else
     return flr(rnd(i))
   end
+end
+
+function rectfill2(x, y, w, h, c)
+  rectfill(x, y, x+(w-1), y+(h-1), c)
 end
